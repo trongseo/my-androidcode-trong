@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+	android:id="@+id/widget137"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	   android:background="@drawable/bg"
+	xmlns:android="http://schemas.android.com/apk/res/android">
+<TableLayout
+	android:id="@+id/widget38"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:orientation="vertical">
+<TextView
+	android:id="@+id/lblEmail"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:background="#fff1f1f1"
+	android:text="Email to:"
+	android:textStyle="bold"
+	android:textColor="#ff000000" />
+<EditText
+	android:id="@+id/txtEmail"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:textSize="18sp" />
+<TextView
+	android:id="@+id/lblSDT"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:background="#fff1f1f1"
+	android:text="Phone to:"
+	android:textStyle="bold"
+	android:textColor="#ff000000" />
+<EditText
+	android:id="@+id/txtPhone"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:textSize="18sp" />
+<TextView
+	android:id="@+id/txtDiaChi"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:background="#fff1f1f1"
+	android:text="&#272;&#7883;a ch&#7881;:"
+	android:textStyle="bold"
+	android:textColor="#ff000000" />
+<Button
+	android:id="@+id/btnRun"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:text="Get current address" />
+<TextView
+	android:id="@+id/lblGhiChu"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:background="#fff1f1f1"
+	android:text="Sender&apos;s name - Notes"
+	android:textStyle="bold"
+	android:textColor="#ff000000" />
+<EditText
+	android:id="@+id/txtGhiChu"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:textSize="18sp" />
+<Button
+	android:id="@+id/btnChupHinh"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:text="Take  photos" />
+<ImageView
+	android:id="@+id/imgView"
+	android:layout_width="wrap_content"
+	android:layout_height="24dp" />
+<TextView
+	android:id="@+id/lblStatus"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:background="#ff10d72d"
+	android:text="ok"
+	android:textColor="#fffefefe" />
+<TableLayout
+	android:id="@+id/widget150"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:orientation="vertical">
+<TableRow
+	android:id="@+id/widget151"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:orientation="horizontal">
+<Button
+	android:id="@+id/btnGui"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:text="Send to email" />
+<Button
+	android:id="@+id/btnSendSMS"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:text="Send by SMS" />
+
+</TableRow>
+</TableLayout>
+<com.startapp.android.publish.banner.Banner 
+          android:id="@+id/startAppBanner"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_centerHorizontal="true"/>
+</TableLayout>
+</ScrollView>

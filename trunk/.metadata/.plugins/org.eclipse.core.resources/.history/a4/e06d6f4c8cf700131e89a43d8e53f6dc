@@ -1,0 +1,25 @@
+package fast.email.com;
+
+import android.provider.BaseColumns;
+
+public  class CLSXml {
+    // To prevent someone from accidentally instantiating the contract class,
+    // give it an empty constructor.
+    public CLSXml() {}
+
+    public void writeXML()
+    {
+    	
+    	try {
+    	    FileOutputStream fOut = openFileOutput(FILE_NAME, MODE_WORLD_READABLE); 
+    	    OutputStreamWriter osw = new OutputStreamWriter(fOut);  
+    	    String fileContent = …; //build file content
+    	    osw.write(fileContent ); 
+    	    osw.flush(); 
+    	    osw.close();
+    	    
+    	} catch (FileNotFoundException e) {
+    	…
+    	}
+    }
+}

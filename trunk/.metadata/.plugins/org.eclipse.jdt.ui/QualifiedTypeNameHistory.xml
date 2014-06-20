@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="android.database.sqlite.SQLiteDatabase"/>
+<fullyQualifiedTypeName name="android.provider.BaseColumns"/>
+<fullyQualifiedTypeName name="java.io.OutputStreamWriter"/>
+<fullyQualifiedTypeName name="android.content.Context"/>
+<fullyQualifiedTypeName name="fast.email.com.TextHelper"/>
+<fullyQualifiedTypeName name="fast.email.com.MainActivity"/>
+<fullyQualifiedTypeName name="android.provider.MediaStore.Files"/>
+</qualifiedTypeNameHistroy>
