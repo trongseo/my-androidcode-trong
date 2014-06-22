@@ -38,11 +38,14 @@
 	android:text="Phone to:"
 	android:textStyle="bold"
 	android:textColor="#ff000000" />
+
 <EditText
-	android:id="@+id/txtPhone"
-	android:layout_width="wrap_content"
-	android:layout_height="wrap_content"
-	android:textSize="18sp" />
+    android:id="@+id/txtPhone"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:inputType="phone"
+    android:textSize="18sp" />
+
 <TextView
 	android:id="@+id/txtDiaChi"
 	android:layout_width="fill_parent"
@@ -82,11 +85,14 @@
 	android:text="Sender&apos;s name - Notes"
 	android:textStyle="bold"
 	android:textColor="#ff000000" />
+
 <EditText
-	android:id="@+id/txtGhiChu"
-	android:layout_width="wrap_content"
-	android:layout_height="wrap_content"
-	android:textSize="18sp" />
+    android:id="@+id/txtGhiChu"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:inputType="textMultiLine"
+    android:textSize="18sp" />
+
 <Button
 	android:id="@+id/btnChupHinh"
 	android:layout_width="wrap_content"
