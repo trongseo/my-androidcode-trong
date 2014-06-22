@@ -5,6 +5,7 @@ package address.share.fast.pro.com;
 
 
 import address.share.fast.pro.com.R;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.*;
@@ -48,6 +49,8 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 
+import address.share.fast.pro.com.TextHelper;
+
 
 
 public class MainActivity extends Activity
@@ -73,7 +76,7 @@ public class MainActivity extends Activity
      EditText txtSDT ;
        EditText txtMAKH ;
      EditText  txtGhiChu;
-        EditText  txtEmail;
+     AutoCompleteTextView  txtEmail;
     TextView lblStatus;
     ImageView imgView;
     Spinner ddlTimer;
@@ -91,6 +94,7 @@ public class MainActivity extends Activity
     int TAKE_PHOTO_CODE = 0;
 public static int count=0;
 String fullPathPic = "";
+private ArrayAdapter<String> adapter;
 
     /** Called when the activity is first created. */
     @Override
@@ -102,7 +106,7 @@ String fullPathPic = "";
         createShortcut();
         
             lblSDT= (TextView)findViewById(R.id.lblSDT);
-    txtEmail  = (EditText)findViewById(R.id.txtEmail);
+
     txtPhone = (EditText)findViewById(R.id.txtPhone);
     txtDiaChi = (TextView)findViewById(R.id.txtDiaChi);
         btnRun = (Button)findViewById(R.id.btnRun);
@@ -127,11 +131,29 @@ String fullPathPic = "";
 //        ddlTimer.setAdapter(adapter);
         
        // btnStop = (Button)findViewById(R.id.btnStop);
-      
+        String fileRead =  TextHelper.readFileAsString(getBaseContext(),  "fastmail.txt");
+        // txtEmail.setText(fileRead);
+        // StartAppSDK.init(this, "106464757", "206400255");
+      // get the defined string-array 
+      		//String[] colors = getResources().getStringArray(R.array.colorList);
+        String[] listEmail;
+       
+        txtEmail = (AutoCompleteTextView) findViewById(R.id.txtEmail);
+        String emailFile =  TextHelper.readFileAsString(getBaseContext(),  "email.txt");
+        if(emailFile!="")		
+        {
+     	   listEmail = emailFile.split(";");
+     	   adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,listEmail);
+     		// txtEmail  = (EditText)findViewById(R.id.txtEmail);
+     	 
+     		// set adapter for the auto complete fields
+     		 		txtEmail.setAdapter(adapter);
+     		 		txtEmail.setThreshold(1);
+        }
 lblStatus = (TextView)findViewById(R.id.lblStatus);
   imgView.setImageResource(android.R.color.transparent);
-   String fileRead =  TextHelper.readFileAsString(getBaseContext(),  "simple_track.txt");
-    txtEmail.setText(fileRead);
+ 
+   
 
     
     btnViewMap.setOnClickListener(new View.OnClickListener() {			
@@ -149,6 +171,7 @@ lblStatus = (TextView)findViewById(R.id.lblStatus);
      
    
    btnGui.setOnClickListener(new View.OnClickListener() {			
+			@SuppressLint("SimpleDateFormat")
 			@SuppressWarnings("unchecked")
 			@Override
 			public void onClick(View v) {
@@ -188,22 +211,39 @@ lblStatus = (TextView)findViewById(R.id.lblStatus);
 			 String returnPost =  postData( emailse, txtDiaChi.getText().toString(),"sdt" ,gpsADD[0] + "-" + gpsADD[1], txtGhiChu.getText().toString(),fullPathPic) ;
                          if( returnPost.indexOf("_okokok")!=-1)
                          {
+                        	 String idretr= returnPost.split("_")[0];
                         	 if(fullScalePath!="")
-                             if(count>0)
                              {
-                                String idretr= returnPost.split("_")[0];
+                                
                                 FileInputStream fstrm = new FileInputStream(fullScalePath);//fullPathPic
                                 HttpFileUpload hfu = new HttpFileUpload("http://"+ippost+"/upload.aspx", idretr,"my file description");
                                 hfu.Send_Now(fstrm);
+                             }else
+                             {
+                            	
+                                 HttpFileUpload hfu = new HttpFileUpload("http://"+ippost+"/upload.aspx", idretr,"my file description");
+                                 hfu.SendingMail();
+                            	 
                              }
                              
                          }
                          
-                               
+                       //update email.txt
+         				TextHelper.writeStringAsFile(getBaseContext(), txtEmail.getText().toString(), "email.txt");
+//         				String emailFile =  TextHelper.readFileAsString(getBaseContext(),  "email.txt");
+//         				   if(emailFile!="")		
+//         				   {
+//         					 String []  listEmail = emailFile.split(";");
+//         					   adapter = new ArrayAdapter<String>(getBaseContext(),android.R.layout.simple_list_item_2,listEmail);
+//         						// txtEmail  = (EditText)findViewById(R.id.txtEmail);
+//         						
+//         						// set adapter for the auto complete fields
+//         						 		txtEmail.setAdapter(adapter);
+//         						 		txtEmail.setThreshold(1);
+//         				   }
                                  Date cDate = new Date();
                           String fDate = new SimpleDateFormat("hh:mm:ss").format(cDate);
-                           lblStatus.setText("Sent:"+ fDate +"!" );
-                           TextHelper.writeStringAsFile(getBaseContext(), txtEmail.getText().toString(), "simple_track.txt");
+                           lblStatus.setText("Sent at:"+ fDate +"!" );
                            
                              btnGui.setEnabled(true);
                            }catch (Exception ex)
@@ -236,7 +276,7 @@ lblStatus = (TextView)findViewById(R.id.lblStatus);
 	            Date cDate = new Date();
                 String fDate = new SimpleDateFormat("hh:mm:ss").format(cDate);
                  lblStatus.setText("Sent:"+ fDate +"!" );
-                 TextHelper.writeStringAsFile(getBaseContext(), txtEmail.getText().toString(), "simple_track.txt");
+                 
                 
   
 			}

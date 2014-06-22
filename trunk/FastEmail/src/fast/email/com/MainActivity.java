@@ -1,9 +1,5 @@
 package fast.email.com;
 
-
-
-
-
 import fast.email.com.R;
 import fast.email.com.HttpFileUpload;
 import fast.email.com.TextHelper;
@@ -126,7 +122,7 @@ private Button btnUnAttach;
       
 lblStatus = (TextView)findViewById(R.id.lblStatus);
 createShortcut();
-   String fileRead =  TextHelper.readFileAsString(getBaseContext(),  "fastmail.txt");
+   //String fileRead =  TextHelper.readFileAsString(getBaseContext(),  "fastmail.txt");
    // txtEmail.setText(fileRead);
    // StartAppSDK.init(this, "106464757", "206400255");
  // get the defined string-array 

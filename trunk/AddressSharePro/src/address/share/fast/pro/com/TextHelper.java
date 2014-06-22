@@ -11,10 +11,12 @@ import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.util.Log;
+
 import java.io.*;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
 import org.apache.http.HttpResponse;
 
 /**
@@ -45,15 +47,21 @@ class TextHelper {
   }
   
 
-public static void writeStringAsFile(Context context,final String fileContents, String fileName) {
+public static void writeStringAsFile(Context context, String fileContents, String fileName) {
          
-        try {
-            FileWriter out = new FileWriter(new File(context.getFilesDir(), fileName));
-            out.write(fileContents);
-            out.close();
-        } catch (IOException e) {
-            
-        }
+	 try {
+     	String contxFile =  readFileAsString(  context,fileName) ;
+     	if(contxFile.indexOf(";"+fileContents) ==-1)
+     	{
+     		fileContents =contxFile+";"+fileContents;
+             FileWriter out = new FileWriter(new File(context.getFilesDir(), fileName));
+             out.write(fileContents);
+             out.close();
+     	}
+     	
+     } catch (IOException e) {
+         
+     }
     }
 
     public static String readFileAsString( Context context,String fileName) {
